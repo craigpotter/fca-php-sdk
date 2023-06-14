@@ -1,7 +1,8 @@
 # FCA API SDK for PHP
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/craigpotter/fca-php-sdk.svg?style=flat-square)](https://packagist.org/packages/craigpotter/fca-php-sdk)
-[![Tests](https://img.shields.io/github/actions/workflow/status/craigpotter/fca-php-sdk/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/craigpotter/fca-php-sdk/actions/workflows/run-tests.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/craigpotter/fca-php-sdk/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/craigpotter/fca-php-sdk/actions/workflows/tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/craigpotter/fca-php-sdk.svg?style=flat-square)](https://packagist.org/packages/craigpotter/fca-php-sdk)
+
 
 This is an unofficial PHP SDK for [FCA's API](https://register.fca.org.uk/Developer/s/) and is powered by [Saloon](https://github.com/Sammyjo20/Saloon).
 
