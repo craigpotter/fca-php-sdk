@@ -33,7 +33,7 @@ $fca = new Fca('my.email@dev.test', 'my-api-key');
 
 // 12345 is the FCA firm reference number
 
-$firmFrnExists = $fa->firm(12345)->exists(); // Returns a boolean
+$firmFrnExists = $fca->firm(12345)->exists(); // Returns a boolean
 
 $response = $fca->firm(12345)->get();
 
@@ -61,7 +61,7 @@ $fca = new Fca('my.email@dev.test', 'my-api-key');
 
 // 12345 is the FCA firm reference number
 
-$firmFrnExists = $fa->firm(12345)->exists(); // Returns a boolean
+$firmFrnExists = $fca->firm(12345)->exists(); // Returns a boolean
 ```
 
 #### Get a firm by FRN
