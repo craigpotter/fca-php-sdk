@@ -73,7 +73,7 @@ $fca = new Fca('my.email@dev.test', 'my-api-key');
 
 // 12345 is the FCA firm reference number
 
-$response = $fa->firm(12345)->get(); // Returns a Saloon response object
+$response = $fca->firm(12345)->get(); // Returns a Saloon response object
 
 $firm = $response->dto(); // Returns a Firm DTO
 $firm->frn; // 12345
@@ -100,7 +100,7 @@ $fca = new Fca('my.email@dev.test', 'my-api-key');
 
 // 12345 is the FCA firm reference number
 
-$paginatedData = $fa->firm(12345)->individuals(); // Returns a Saloon response object
+$paginatedData = $fca->firm(12345)->individuals(); // Returns a Saloon response object
 
 $paginatedData->totalPages(); // Returns the total number of pages
 $paginatedData->totalResults(); // Returns the total number of results
