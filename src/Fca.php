@@ -7,12 +7,12 @@ namespace CraigPotter\Fca;
 use Saloon\Http\Connector;
 use Saloon\Contracts\Request;
 use Saloon\Contracts\Response;
+use Saloon\PaginationPlugin\Paginator;
 use CraigPotter\Fca\Requests\GetEndpoint;
 use CraigPotter\Fca\Resources\FirmResource;
-use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\PaginationPlugin\PagedPaginator;
-use Saloon\PaginationPlugin\Paginator;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
+use Saloon\PaginationPlugin\Contracts\HasPagination;
 
 class Fca extends Connector implements HasPagination
 {
@@ -87,8 +87,7 @@ class Fca extends Connector implements HasPagination
 
     public function paginate(Request $request, ...$additionalArguments): PagedPaginator
     {
-        return new class(connector: $this, request: $request) extends PagedPaginator
-        {
+        return new class(connector: $this, request: $request) extends PagedPaginator {
             protected ?int $perPageLimit = 20;
 
             /**
