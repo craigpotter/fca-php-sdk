@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CraigPotter\Fca\Resources;
 
-use Saloon\Http\Connector;
 use Saloon\Http\Response;
+use Saloon\Http\Connector;
 use Saloon\PaginationPlugin\PagedPaginator;
 use Saloon\Exceptions\Request\RequestException;
 use CraigPotter\Fca\Requests\Firm\GetFirmDetails;
