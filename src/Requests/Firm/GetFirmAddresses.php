@@ -6,7 +6,7 @@ namespace CraigPotter\Fca\Requests\Firm;
 
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 use CraigPotter\Fca\DataObjects\Address;
 use Saloon\PaginationPlugin\Contracts\Paginatable;
 
