@@ -6,8 +6,9 @@ namespace CraigPotter\Fca\Requests;
 
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class GetEndpoint extends Request
+class GetEndpoint extends Request implements Paginatable
 {
     /**
      * The HTTP method of the request.

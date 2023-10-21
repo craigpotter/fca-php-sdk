@@ -113,7 +113,9 @@ class Fca extends Connector implements HasPagination
              */
             protected function getPageItems(Response $response, Request $request): array
             {
-                return $request->createDtoFromResponse($response);
+                $items = $request->createDtoFromResponse($response);
+
+                return $items ?? $response->json('Data', []);
             }
 
             /**
