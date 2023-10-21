@@ -3,7 +3,7 @@
 declare(strict_types=1);
 namespace CraigPotter\Fca\Resources;
 
-use Saloon\Contracts\Connector;
+use Saloon\Http\Connector;
 
 class Resource
 {

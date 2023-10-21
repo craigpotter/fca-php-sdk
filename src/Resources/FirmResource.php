@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CraigPotter\Fca\Resources;
 
+use Saloon\Http\Connector;
 use Saloon\Http\Response;
 use Saloon\PaginationPlugin\PagedPaginator;
 use Saloon\Exceptions\Request\RequestException;
@@ -13,7 +14,7 @@ use CraigPotter\Fca\Requests\Firm\GetFirmIndividuals;
 
 class FirmResource extends Resource
 {
-    public function __construct(protected \Saloon\Contracts\Connector $connector, public readonly int $frn)
+    public function __construct(protected Connector $connector, public readonly int $frn)
     {
         parent::__construct($connector);
     }
