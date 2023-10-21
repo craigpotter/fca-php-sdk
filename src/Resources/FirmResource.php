@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CraigPotter\Fca\Resources;
 
 use Saloon\Http\Response;
-use Saloon\Http\Paginators\PagedPaginator;
+use Saloon\PaginationPlugin\PagedPaginator;
 use Saloon\Exceptions\Request\RequestException;
 use CraigPotter\Fca\Requests\Firm\GetFirmDetails;
 use CraigPotter\Fca\Requests\Firm\GetFirmAddresses;

@@ -7,12 +7,12 @@ namespace CraigPotter\Fca;
 use Saloon\Http\Connector;
 use Saloon\Contracts\Request;
 use Saloon\Contracts\Response;
-use Saloon\Contracts\Paginator;
-use Saloon\Contracts\HasPagination;
+use Saloon\PaginationPlugin\Paginator;
 use CraigPotter\Fca\Requests\GetEndpoint;
-use Saloon\Http\Paginators\PagedPaginator;
 use CraigPotter\Fca\Resources\FirmResource;
+use Saloon\PaginationPlugin\PagedPaginator;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
+use Saloon\PaginationPlugin\Contracts\HasPagination;
 
 class Fca extends Connector implements HasPagination
 {
@@ -74,22 +74,64 @@ class Fca extends Connector implements HasPagination
         return new FirmResource($this, $frn);
     }
 
+    /**
+     * Get an endpoint
+     *
+     * @param string $endpoint
+     * @return Paginator
+     */
     public function getEndpoint(string $endpoint): Paginator
     {
         return $this->paginate(new GetEndpoint($endpoint));
     }
 
-    public function paginate(Request $request, ...$additionalArguments): Paginator
+    public function paginate(Request $request, ...$additionalArguments): PagedPaginator
     {
-        /** @var PagedPaginator $paginator */
-        $paginator = new PagedPaginator($this, $request, 20, ...$additionalArguments);
+        return new class(connector: $this, request: $request) extends PagedPaginator {
+            protected ?int $perPageLimit = 20;
 
-        $paginator->setTotalKeyName('ResultInfo.total_count');
-        $paginator->setPageKeyName('pgnp');
-        $paginator->setLimit(20);
-        $paginator->setNextPageKeyName('ResultInfo.Next');
-        $paginator->setCurrentPage(1);
+            /**
+             * Determine if the response is the last page
+             *
+             * @param Response $response
+             * @return bool
+             */
+            protected function isLastPage(Response $response): bool
+            {
+                $count = (int) $response->json('ResultInfo.total_count', 0);
+                $perPage = (int) $response->json('ResultInfo.per_page', $count);
+                $currentPage = (int) $response->json('ResultInfo.page', 1);
 
-        return $paginator;
+                return $count <= ($perPage * $currentPage);
+
+            }
+
+            /**
+             * Get the results from the page
+             *
+             * @return array
+             */
+            protected function getPageItems(Response $response, Request $request): array
+            {
+                return $request->createDtoFromResponse($response);
+            }
+
+            /**
+             * Apply pagination to the request
+             *
+             * @param Request $request
+             * @return Request
+             */
+            protected function applyPagination(Request $request): Request
+            {
+                $request->query()->add('pgnp', $this->page);
+
+                if (isset($this->perPageLimit)) {
+                    $request->query()->add('pageSize', $this->perPageLimit);
+                }
+
+                return $request;
+            }
+        };
     }
 }
