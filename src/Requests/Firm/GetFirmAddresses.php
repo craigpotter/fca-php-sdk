@@ -8,8 +8,9 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Contracts\Response;
 use CraigPotter\Fca\DataObjects\Address;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class GetFirmAddresses extends Request
+class GetFirmAddresses extends Request implements Paginatable
 {
     /**
      * The HTTP method of the request.
