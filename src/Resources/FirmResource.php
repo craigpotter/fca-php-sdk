@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CraigPotter\Fca\Resources;
 
-use Saloon\Http\Connector;
 use Saloon\Http\Response;
+use Saloon\Http\Connector;
 use Saloon\PaginationPlugin\PagedPaginator;
 use Saloon\Exceptions\Request\RequestException;
 use CraigPotter\Fca\Requests\Firm\GetFirmDetails;
@@ -30,7 +30,7 @@ class FirmResource extends Resource
         try {
             $response = $this->connector->send(new GetFirmDetails($this->frn));
         } catch (RequestException $e) {
-            if(str_contains($e->getMessage(), 'Firm not found')) {
+            if (str_contains($e->getMessage(), 'Firm not found')) {
                 return false;
             }
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CraigPotter\Fca;
 
-use Saloon\Http\Connector;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\Http\Connector;
 use Saloon\PaginationPlugin\Paginator;
 use CraigPotter\Fca\Requests\GetEndpoint;
 use CraigPotter\Fca\Resources\FirmResource;
