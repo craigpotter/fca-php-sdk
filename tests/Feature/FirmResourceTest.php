@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use CraigPotter\Fca\Fca;
-use Saloon\Http\Faking\MockClient;
 use Saloon\Http\PendingRequest;
+use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
 use CraigPotter\Fca\DataObjects\Address;
 use CraigPotter\Fca\DataObjects\Individual;
