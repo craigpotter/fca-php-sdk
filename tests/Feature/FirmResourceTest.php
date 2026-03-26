@@ -15,7 +15,7 @@ use CraigPotter\Fca\Requests\Firm\GetFirmIndividuals;
 
 it('can get a check a firms fca number exists', function () {
     $mockClient = new MockClient([
-        GetFirmDetails::class => MockResponse::fixture('firm.details'),
+        GetFirmDetails::class => MockResponse::fixture('firm/details'),
     ]);
 
     $fca = new Fca($_ENV['AUTH_EMAIL'], $_ENV['AUTH_KEY']);
@@ -28,7 +28,7 @@ it('can get a check a firms fca number exists', function () {
 
 it('can get a check a firms fca number does not exists', function () {
     $mockClient = new MockClient([
-        GetFirmDetails::class => MockResponse::fixture('firm.details.not-found'),
+        GetFirmDetails::class => MockResponse::fixture('firm/details-not-found'),
     ]);
 
     $fca = new Fca($_ENV['AUTH_EMAIL'], $_ENV['AUTH_KEY']);
@@ -41,7 +41,7 @@ it('can get a check a firms fca number does not exists', function () {
 
 it('can get a firms details', function () {
     $mockClient = new MockClient([
-        GetFirmDetails::class => MockResponse::fixture('firm.details'),
+        GetFirmDetails::class => MockResponse::fixture('firm/details'),
     ]);
 
     $fca = new Fca($_ENV['AUTH_EMAIL'], $_ENV['AUTH_KEY']);
@@ -60,7 +60,7 @@ it('can get a firms details', function () {
 
 it('throws an exception when the firm is not found', function () {
     $mockClient = new MockClient([
-        GetFirmDetails::class => MockResponse::fixture('firm.details.not-found'),
+        GetFirmDetails::class => MockResponse::fixture('firm/details-not-found'),
     ]);
 
     $fca = new Fca($_ENV['AUTH_EMAIL'], $_ENV['AUTH_KEY']);
@@ -74,9 +74,9 @@ it('can get a firms individuals via pagination', function () {
     $mockClient = new MockClient([
         GetFirmIndividuals::class => function (PendingRequest $pendingRequest) {
             return match ($pendingRequest->query()->get('pgnp')) {
-                1 => MockResponse::fixture('firm.individuals.1'),
-                2 => MockResponse::fixture('firm.individuals.2'),
-                3 => MockResponse::fixture('firm.individuals.3'),
+                1 => MockResponse::fixture('firm/individuals-1'),
+                2 => MockResponse::fixture('firm/individuals-2'),
+                3 => MockResponse::fixture('firm/individuals-3'),
             };
         },
     ]);
@@ -103,7 +103,7 @@ it('can get a firms individuals via pagination', function () {
 
 it('can get a firm addresses', function () {
     $mockClient = new MockClient([
-        GetFirmAddresses::class => MockResponse::fixture('firm.address'),
+        GetFirmAddresses::class => MockResponse::fixture('firm/address'),
     ]);
 
     $fca = new Fca($_ENV['AUTH_EMAIL'], $_ENV['AUTH_KEY']);
